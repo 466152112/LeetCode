@@ -1,37 +1,3 @@
-public class SortList {
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		ListNode head = new ListNode(7);
-		ListNode move = head;
-		int seed;
-		for(seed = 14; seed > 0 ; seed--) {
-			ListNode tmp = new ListNode(seed);
-			move.next = tmp;
-			move = move.next;
-		}
-		
-		Solution a = new Solution();
-		move = a.sortList(head);
-		head = move;
-		while(head != null) {
-			System.out.println(head.val);
-			head = head.next;
-		}
-		
-	}
-
-	
-}
-class ListNode {
-	int val;
-	ListNode next;
-
-	ListNode(int x) {
-		val = x;
-		next = null;
-	}
-}
-
 class Solution {
 	public ListNode sortList(ListNode head) {
 		if (head == null || head.next == null) {
@@ -49,6 +15,8 @@ class Solution {
 	// find the middle of the linked list
 	private ListNode findMid(ListNode head) {
 		ListNode slow = head;
+		// set fast to the next of head, so that the middle is the first one in even size situations
+		// which is very important to split the list half by half
 		ListNode fast = head.next;
 		while (fast != null && fast.next != null) {
 			slow = slow.next;
@@ -71,15 +39,12 @@ class Solution {
 			}
 			tail = tail.next;
 		}
-		while (left != null) {
+		// just set the tail to the begining of the rest, that's enough
+		if (left != null) {
 			tail.next = left;
-			left = left.next;
-			tail = tail.next;
 		}
-		while (right != null) {
+		else if (right != null) {
 			tail.next = right;
-			right = right.next;
-			tail = tail.next;
 		}
 		return head.next;
 	}
