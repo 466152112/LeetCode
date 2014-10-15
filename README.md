@@ -1,4 +1,4 @@
 leecode
 =======
 
-my practice answer for leecode
+my practice answer for leetcode
