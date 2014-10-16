@@ -1,5 +1,9 @@
 public class Atoi {
-
+	// First determin '-' or '+'
+	// charactor with in '0' and '9'
+	// overflow: larger within 10, become negative
+	//				larger 10 times, compare before time 10
+	// use long type, so that it's much easier to compare with MAX_VALUE
 	public int atoi(String str) {
             str = str.trim();
             if (str.length() == 0)
@@ -32,10 +36,10 @@ public class Atoi {
 	                 }
 	            }
 	            else {
-	                return result*neg;
+	                return (int)result*neg;
 	            }
 	        }
-	        return result*neg;
+	        return (int)result*neg;
     }
     
 	public int atoi_without_long(String str) {
