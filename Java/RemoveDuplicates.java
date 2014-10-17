@@ -10,7 +10,7 @@
  * }
  */
 public class Solution {
-    // use two points
+    // use two pointers
     public ListNode deleteDuplicates(ListNode head) {
         if (head == null || head.next == null)
             return head;
@@ -28,7 +28,7 @@ public class Solution {
         return head;
     }
     
-    // use one point
+    // use one pointer
     public ListNode deleteDuplicates9(ListNode head) {
         if (head == null)
             return head;
