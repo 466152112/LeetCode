@@ -6,6 +6,7 @@ public class Solution {
         stack.push(root);
         while(!stack.empty()) {
             TreeNode node = stack.pop();
+            // check the node is null or not before push it into the stack is more efficent
             if (node == null)
                 continue;
             result.add(node.val);
