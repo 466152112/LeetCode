@@ -1,5 +1,6 @@
 public class Solution {
     public int reverse(int x) {
+        // NO need to check negative, only in python, the negtive mod is different
         int neg = 1;
         if (x < 0) {
             neg = -1;
