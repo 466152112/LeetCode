@@ -1,5 +1,7 @@
 // ArrayList: constructor ArrayList(int i) i is the capacity of the array
 // when you know the capacity, you can use set(int index, int value) to set the value, instead of add()
+// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! NO NO NO
+// the capacity is not the initialized memory, it's the maximum memory, you still need to add, then set
 // Use this way to initialize with values : ArrayList<Integer> one = new ArrayList<Integer>(){{add(1);}};
 // array.size() is the row number in Pascal Triangle
 public ArrayList<ArrayList<Integer>> generate(int numRows) {
