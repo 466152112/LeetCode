@@ -1,3 +1,4 @@
+// convert vertically
 public String convert(String s, int nRows) {
     int len = s.length();
     if (s == null || s == "" || nRows <= 1 || nRows >= len)
@@ -6,11 +7,7 @@ public String convert(String s, int nRows) {
     int[] offset = new int[nRows];
     int size = nRows+nRows-2;
     int mod = len/size;
-    int rem;
-    if (mod!=0)
-        rem = len%size;
-    else
-        rem = len;
+    int rem = (size + len)%size;
     for (int i = 0; i < nRows; i++) {
         offset[i] = (i>0?offset[i-1]:0) + ((i>0 && i<(nRows-1))?2*mod:mod) + ((rem--)>0?1:0);
     }
@@ -37,4 +34,9 @@ public String convert(String s, int nRows) {
         }
     }
     return String.valueOf(result);
+}
+
+// convert horizontally
+public String convert(String s, int nRows) {
+    
 }
