@@ -6,7 +6,7 @@ public ArrayList<ArrayList<Integer>> zigzagLevelOrder(TreeNode root) {
     Stack<TreeNode> stack_left = new Stack<TreeNode>();
     Stack<TreeNode> stack_right = new Stack<TreeNode>();
     stack_left.push(root);
-    int right_first = -1;
+    int right_first = -1; // -1, push the right fist: +1, push the left node first
     while (!stack_left.isEmpty() || !stack_right.isEmpty()) {
         ArrayList<Integer> currentLevel = new ArrayList<Integer>();
         int size = right_first>0?stack_right.size():stack_left.size();
