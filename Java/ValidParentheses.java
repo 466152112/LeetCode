@@ -1,5 +1,6 @@
 // Generic not support primitives
 // use functions to check ( and ), or use hash maps
+// use String.contains(c) to decide push or pop, or use hash maps
 
 public boolean isValid(String s) {
     HashMap<Character,Boolean> flag = new HashMap<Character,Boolean>(){{
