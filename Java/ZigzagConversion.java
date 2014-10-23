@@ -38,5 +38,29 @@ public String convert(String s, int nRows) {
 
 // convert horizontally
 public String convert(String s, int nRows) {
-    
+    int len = s.length();
+    if (len <= nRows || nRows <= 1)
+        return s;
+    char[] result = new char[len];
+    // size of the repeated patten
+    int size = nRows*2 - 2;
+    for (int i = 0, j = 0; i < nRows; i++) {
+        // count how many patten has passed
+        int offset = 0;
+        if (i == 0 || i == nRows -1) {
+            while (i + size*offset < len){
+                result[j++] = s.charAt(i + size*offset++);
+            }
+        }
+        else {
+            result[j++] = s.charAt(i + size*offset++);
+            while (i + size*offset < len){
+                result[j++] = s.charAt(i + size*offset - 2*i);
+                result[j++] = s.charAt(i + size*offset++);
+            }
+            if (i + size*offset - 2*i < len)
+                result[j++] = s.charAt(i + size*offset - 2*i);
+        }
+    }
+    return String.valueOf(result);
 }
