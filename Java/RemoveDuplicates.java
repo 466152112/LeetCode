@@ -44,3 +44,17 @@ public class Solution {
         return head;
     }
 }
+
+// remove duplicates in the Array
+public int removeDuplicates(int[] A) {
+    int len = A.length;
+    if (len < 2)
+        return len;
+    int slow = 0, fast = 1;
+    for (; fast < len; fast++) {
+        if (A[fast] == A[slow])
+            continue;
+        A[++slow] = A[fast];
+    }
+    return slow+1;
+}
