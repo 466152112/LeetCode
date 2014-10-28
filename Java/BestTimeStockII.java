@@ -12,18 +12,9 @@ public int maxProfit(int[] prices) {
 
 // add one by one
 public int maxProfit(int[] prices) {
-    int len = prices.length, result = 0;
-    if (len <= 1)
-        return result;
-    if (len == 2)
-        return (prices[0] < prices[1] ? prices[1] - prices[0] : 0);
-    else {
-        for (int i = 1; i < len; i++) {
-            if (prices[i] == 0)
-                i++;
-            else
-                result = result + (prices[i] > prices[i-1]?prices[i] - prices[i-1]:0);
-        }
-        return result;
-    }
+  int len = prices.length, result = 0;
+  // no need to check len = 0 or 1 or 2
+  for (int i = 1; i < len; i++) 
+    result = result + (prices[i] > prices[i-1]?prices[i] - prices[i-1]:0);
+  return result;
 }
