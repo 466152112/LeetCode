@@ -1,4 +1,4 @@
-// DP, time limit exceeded
+// DP without Stack, time limit exceeded
 public int longestValidParentheses(String s) {
         if (s == null || s.length() < 2)
             return 0;
