@@ -35,3 +35,36 @@ public int longestValidParentheses(String s) {
         }
         return max;
     }
+    
+    // stack: check ")", keep track of current matched and max matched
+    public int longestValidParentheses(String s) {
+        if (s == null || s.length() < 2)
+            return 0;
+        int len = s.length();
+        int max = 0;
+        Stack<Integer> stack = new Stack<Integer>();
+        
+        int currentLen = 0, currentMax = 0;
+        for (int i = 0; i < len; i++) {
+            if (s.charAt(i) == '(') {
+                stack.push(i);
+            }
+            else {
+                if (stack.isEmpty()) {
+                    currentMax = 0;
+                }
+                else {
+                    currentLen = i - stack.pop() + 1;
+                    if (!stack.isEmpty()) {
+                        currentLen = i - stack.peek();
+                    }
+                    else {
+                        currentMax += currentLen;
+                    }
+                    max = Math.max(max, currentLen);
+                    max = Math.max(max, currentMax);
+                }
+            }
+        }
+        return max;
+    }
