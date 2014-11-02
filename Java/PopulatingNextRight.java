@@ -27,3 +27,23 @@ public void connect(TreeLinkNode root) {
           level++;
       }
   }
+  
+  // changed to another simple logic
+      public void connect(TreeLinkNode root) {
+        if (root == null)
+            return;
+        // set first level
+        root.next = null;
+        TreeLinkNode cursor;
+        while (root.left != null) {
+            cursor = root;
+            while (cursor.next != null) {
+                cursor.left.next = cursor.right;
+                cursor.right.next = cursor.next.left;
+                cursor = cursor.next;
+            }
+            cursor.left.next = cursor.right;
+            cursor.right.next = null;
+            root = root.left;
+        }
+    }
