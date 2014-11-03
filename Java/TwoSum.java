@@ -21,10 +21,13 @@ public class Solution {
         int[] result = new int[2];
         HashMap<Integer, Integer> map = new HashMap<Integer, Integer>();
         for (int i = 0; i < numbers.length; i++)
+        // consider duplicates? no, because duplicates is mutual, we only keep one key in the hash map
+        // etc. duplicates alwasy only keep the larger index, which will be matched bofore the for loop get there
             map.put(numbers[i],i);
         for (int i = 0; i < numbers.length; i++) {
                 if (map.containsKey(target - numbers[i]) && map.get(target - numbers[i]) != i) {
                     int j = map.get(target - numbers[i]);
+                    // no need to compare the i and j, i is alway less or equal with j
                     result[0] = (i < j ? i:j) + 1;
                     result[1] = (i > j ? i:j) + 1;
                     return result;
