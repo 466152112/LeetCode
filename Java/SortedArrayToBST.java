@@ -6,6 +6,7 @@ public TreeNode sortedArrayToBST(int[] num) {
     return helper(num, 0, num.length - 1);
 }
 private TreeNode helper(int[] num, int start, int end) {
+    // bug 3: no need to check start == end, think about it
     if (start == end)
         return new TreeNode(num[start]);
     // bug 2: start < end
