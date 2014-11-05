@@ -43,3 +43,24 @@ public ListNode reverseBetween(ListNode head, int m, int n) {
     inEnd.next = outEnd;
     return dummy.next;
 }
+
+
+// another funny way
+    public ListNode reverseBetween(ListNode head, int m, int n) {
+        if(head==null || head.next==null) return head;
+        ListNode newhead = new ListNode(0);
+        newhead.next = head;
+        ListNode outStart = newhead;
+        int k = 1;
+        while(k++<m) outStart = outStart.next;
+        ListNode inEnd = outStart.next;
+        ListNode cur = inEnd;
+        // move the next pointer with the cursor
+        while(m++<n) {
+            cur = inEnd.next;
+            inEnd.next = cur.next;
+            cur.next = outStart.next;
+            outStart.next = cur;
+        }
+        return newhead.next;
+    }
