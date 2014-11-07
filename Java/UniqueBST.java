@@ -1,5 +1,8 @@
 // cheating, using the formular f = C(2n,n)/(n+1)
 public int numTrees(int n) {
+        // why float?
+        // because division in int, will lose very import numbers
+        // force it to float, and force it back to int in the result
         float result = 1.0f;
         for (int i = 1; i <= n; i++) {
             result *= (float)(n + i) / i;
