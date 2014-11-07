@@ -18,3 +18,25 @@ public int singleNumber(int[] A) {
     }
     return one;
 }
+
+
+// more intuition version, not space efficent
+public int singleNumber(int[] A) {
+    if (A == null || A.length == 0)
+        return Integer.MIN_VALUE;
+    int[] bits = new int[32];
+    // compute bit by bit
+    int result = 0;
+    for (int i = 0; i < 32; i++) {
+        for (int j = 0; j < A.length; j++) {
+            // remember to & 1, so that just leave the last digit
+            // can not use | operation, adding in the same bit location
+            bits[i] += A[j] >> i & 1;
+        }
+        bits[i] %= 3;
+        // add those bit up to the result
+        // can use | operation, becaue every bit move up the next time
+        result += bits[i] << i;
+    }
+    return result;
+}
