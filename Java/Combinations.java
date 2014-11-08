@@ -14,9 +14,8 @@ public ArrayList<ArrayList<Integer>> combine(int n, int k) {
             result.add(new ArrayList<Integer>(list));
             return;
         }
-        for (int i = 1; i <= n; i++) {
-            if (list.contains(i))
-                continue;
+        // use start to get rid of the digits that have been visited
+        for (int i = start; i <= n; i++) {
             list.add(i);
             helper(result, list, n, k, i + 1);
             list.remove(list.size() - 1);
