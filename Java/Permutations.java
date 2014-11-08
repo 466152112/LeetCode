@@ -1,3 +1,29 @@
+// Nine chaper module: add and remove
+public ArrayList<ArrayList<Integer>> permute(int[] num) {
+    if (num == null || num.length == 0)
+        return null;
+    ArrayList<ArrayList<Integer>> result = new ArrayList<ArrayList<Integer>>();
+    ArrayList<Integer> oneList = new ArrayList<Integer>();
+    helper(num, result, oneList);
+    return result;
+}
+
+private void helper(int[] num, ArrayList<ArrayList<Integer>> result, ArrayList<Integer> oneList) {
+    if (oneList.size() == num.length) {
+        result.add(new ArrayList<Integer>(oneList));
+        return;
+    }
+    for (int i = 0; i < num.length; i++) {
+        if (oneList.contains(num[i]))
+            continue;
+        oneList.add(num[i]);
+        helper(num, result, oneList);
+        oneList.remove(oneList.size() -1 );
+    }
+}
+
+
+// DP, add from location 0 to len - 1, based on former result
 public ArrayList<ArrayList<Integer>> permute(int[] num) {
         ArrayList<ArrayList<Integer>> result = new ArrayList<ArrayList<Integer>>();
         if (num.length < 1)
