@@ -45,6 +45,7 @@ private ArrayList<ArrayList<Integer>> helper(int[] S, int end) {
           result.add(new ArrayList<Integer>(i));
           // add current number to former subsets
           i.add(S[end]);
+          // result.add(i) is enough, because i is no longer used by other objects
           result.add(new ArrayList<Integer>(i));
       }
   }
