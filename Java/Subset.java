@@ -17,3 +17,36 @@ public ArrayList<ArrayList<Integer>> subsets(int[] S) {
           oneList.remove(oneList.size() - 1);
       }
   }
+
+
+// DP
+public ArrayList<ArrayList<Integer>> subsets(int[] S) {
+  ArrayList<ArrayList<Integer>> result = new ArrayList<ArrayList<Integer>>();
+  Arrays.sort(S);
+  result = helper(S, S.length - 1);
+  // add empty set into the result
+  result.add(new ArrayList<Integer>());            
+  return result;
+}
+
+private ArrayList<ArrayList<Integer>> helper(int[] S, int end) {
+  ArrayList<ArrayList<Integer>> result = new ArrayList<ArrayList<Integer>>();
+  if (end < 0) {
+      return result;
+  }
+  else {
+      ArrayList<Integer> one = new ArrayList<Integer>();
+      one.add(S[end]);
+      // add current number
+      result.add(one);
+      ArrayList<ArrayList<Integer>> temp = helper(S, end - 1);
+      for (ArrayList<Integer> i:temp) {
+        	// add former subsets
+          result.add(new ArrayList<Integer>(i));
+          // add current number to former subsets
+          i.add(S[end]);
+          result.add(new ArrayList<Integer>(i));
+      }
+  }
+  return result;
+}
