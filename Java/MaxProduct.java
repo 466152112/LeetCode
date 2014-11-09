@@ -1,3 +1,18 @@
+// keep current max, min, and total maxResult, When A[i] comes, time it with max and min, that's it
+public int maxProduct(int[] A) {
+    int max = A[0], min = A[0], result = A[0];
+    for (int i = 1; i < A.length; i++) {
+        if (A[i] < 0) {
+            int temp = min;
+            min = max;
+            max = temp;
+        }
+        max = Math.max(A[i]*max, A[i]);
+        min = Math.min(A[i]*min, A[i]);
+        result = Math.max(result, max);
+    }
+    return result;
+}
 // naive DP, check whether the end is continued with the maxEnd, handle different case using the former result
 public class Solution {
     private int maxValue, maxEnd;
