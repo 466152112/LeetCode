@@ -1,6 +1,7 @@
 // same module with permutation, combination (more similar with combination)
 public ArrayList<ArrayList<Integer>> subsets(int[] S) {
       ArrayList<ArrayList<Integer>> result = new ArrayList<ArrayList<Integer>>();
+      // actually, no need to check lengt == 0
       if (S == null || S.length == 0)
           return result;
       ArrayList<Integer> oneList = new ArrayList<Integer>();
