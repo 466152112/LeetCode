@@ -32,6 +32,7 @@ public ArrayList<ArrayList<Integer>> subsets(int[] S) {
 
 private ArrayList<ArrayList<Integer>> helper(int[] S, int end) {
   ArrayList<ArrayList<Integer>> result = new ArrayList<ArrayList<Integer>>();
+  // this if and else can be optimized, think about it
   if (end < 0) {
       return result;
   }
