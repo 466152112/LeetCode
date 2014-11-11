@@ -55,12 +55,10 @@ public UndirectedGraphNode cloneGraph(UndirectedGraphNode node) {
     while (!queue.isEmpty()) {
         UndirectedGraphNode current = queue.poll();
         for (UndirectedGraphNode n:current.neighbors) {
-            UndirectedGraphNode newNeighbor;
             if (!map.containsKey(n.label)) {
                 queue.offer(n);
-                newNeighbor = new UndirectedGraphNode(n.label);
-                map.put(n.label, newNeighbor);                    
-                map.get(current.label).neighbors.add(newNeighbor);
+                // no need to give a name to the new node, just put new in the map, and use get to add neighbors
+                map.put(n.label, new UndirectedGraphNode(n.label));                    
             }
             else {
                 map.get(current.label).neighbors.add(map.get(n.label));
