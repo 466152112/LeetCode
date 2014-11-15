@@ -27,6 +27,7 @@ public int findMin(int[] num) {
             left = mid;
         }
         // left == mid, means, left = right - 1
+        // or use (left < right - 1) as while loop condition
         else if (left == mid) {
             break;
         }
