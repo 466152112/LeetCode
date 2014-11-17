@@ -23,3 +23,24 @@ public int lengthOfLongestSubstring(String s) {
     }
     return Math.max(result, map.size());
 }
+
+// 2, hashset, use charAt == charAt(i) instead the oldIndex
+public int lengthOfLongestSubstring(String s) {
+    if (s == null || s.length() == 0)
+        return 0;
+    int result = 0;
+    int leftBound = 0;
+    HashSet<Character> set = new HashSet<Character> ();
+    for (int i = 0; i < s.length(); i++) {
+        if (!set.contains(s.charAt(i))) {
+            set.add(s.charAt(i));
+        }
+        else {
+            result = Math.max(result, set.size());
+            while (s.charAt(leftBound) != s.charAt(i))
+                set.remove(s.charAt(leftBound++));
+            leftBound++;
+        }
+    }
+    return Math.max(result, set.size());
+}
