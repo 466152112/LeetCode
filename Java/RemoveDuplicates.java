@@ -9,6 +9,8 @@
  *     }
  * }
  */
+
+// remove duplicates in Linked List
 public class Solution {
     // use two pointers
     public ListNode deleteDuplicates(ListNode head) {
