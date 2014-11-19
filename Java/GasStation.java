@@ -19,3 +19,23 @@ public int canCompleteCircuit(int[] gas, int[] cost) {
         return -1;
     return result ;
 }
+
+// use total and sum, similar idea
+public int canCompleteCircuit(int[] gas, int[] cost) {
+    if (gas == null || cost == null || gas.length != cost.length || gas.length == 0)
+        return -1;
+    int total = 0;  // total gas so far
+    int sum = 0; // gas balance in the tank
+    int result = 0; // result index
+    for (int i = 0; i < gas.length; i++) {
+        sum += gas[i] - cost[i];  // updata gas remaining
+        total += gas[i] - cost[i];  // updata total gas so far            
+        if (sum < 0) {
+            result = i + 1; // no remaining, update index and balance
+            sum = 0;
+        }
+    }
+    if (total < 0)
+        return -1;
+    return result ;
+}
