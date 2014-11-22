@@ -5,12 +5,14 @@ public String longestPalindrome(String s) {
             return null;
         int len = s.length();
         boolean[][] flag = new boolean[len][len];
+        // set the diagonal to true
         for (int i = 0; i < len; i++)
             flag[i][i] = true;
         int max = 1;
         String result = s.substring(0,1);
         for (int j = 1; j < len; j++) {
             for (int i = 0; i < len - j; i++) {
+                // set the line just below diagonal, because the value of flag[i - 1][j + 1] is not setted
                 if (j == 1)
                     flag[i][i + j] = s.charAt(i) == s.charAt(i + j);
                 else
