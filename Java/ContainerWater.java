@@ -1,4 +1,4 @@
-// prove by contradiction
+// prove by contradiction, move the smaller cursor will not eliminate the right answer
 public int maxArea(int[] height) {
     if (height == null)
         return 0;
