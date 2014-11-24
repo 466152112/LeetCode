@@ -3,11 +3,11 @@ public int maxSubArray(int[] A) {
     int result = Integer.MIN_VALUE;        
     if (A == null || A.length == 0)
         return result;
-    int[] maxSums = new int[A.length + 1];
-    maxSums[0] = 0;
+    // one pass, no need to store former sums in the array
+    int maxSum = 0;
     for (int i = 0; i < A.length; i++) {
-        maxSums[i + 1] = Math.max(A[i], A[i] + maxSums[i]);
-        result = Math.max(result, maxSums[i + 1]);
+        maxSum = Math.max(A[i], A[i] + maxSum);
+        result = Math.max(result, maxSum);
     }
     return result;
 }
