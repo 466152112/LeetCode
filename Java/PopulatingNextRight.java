@@ -33,8 +33,8 @@ public void connect(TreeLinkNode root) {
         if (root == null)
             return;
         // set first level
-        root.next = null;
-        TreeLinkNode cursor;
+        //root.next = null;   // don't set, the default value is null
+        TreeLinkNode cursor = null;
         while (root.left != null) {
             cursor = root;
             while (cursor.next != null) {
@@ -43,7 +43,7 @@ public void connect(TreeLinkNode root) {
                 cursor = cursor.next;
             }
             cursor.left.next = cursor.right;
-            cursor.right.next = null;
+            //cursor.right.next = null;
             root = root.left;
         }
     }
