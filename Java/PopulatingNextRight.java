@@ -47,3 +47,26 @@ public void connect(TreeLinkNode root) {
             root = root.left;
         }
     }
+
+// most brillent idea, two cursor
+public void connect(TreeLinkNode root) {
+    if (root == null)
+        return;
+    TreeLinkNode pre = null;    // previous node to set
+    TreeLinkNode cursor = null; // current node
+    while (root.left != null) {
+        cursor = root;
+        pre = root.left;
+        while (cursor != null) {
+            // left child
+            pre.next = cursor.left;
+            pre = cursor.left;
+            // right child
+            pre.next = cursor.right;
+            pre = cursor.right;
+            // next node
+            cursor = cursor.next;
+        }
+        root = root.left;
+    }
+}
