@@ -1,4 +1,8 @@
 // one pass, DP table
+// two optimazation:
+// 1, originally i'm thinking from the destination, now change you thought to the start point
+// 2, reuse a single array to save storage space, key point is that you don't need fomer min values in the table
+// you only need the most recent values
 public int minPathSum(int[][] grid) {
     if (grid == null)
         return Integer.MAX_VALUE;
