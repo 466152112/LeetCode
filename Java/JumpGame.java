@@ -1,4 +1,4 @@
-// one pass, update current longest jump
+// one pass, update current longest jump, O(N)
 public boolean canJump(int[] A) {
     if (A == null || A.length == 0)
         return false;
@@ -29,4 +29,21 @@ public boolean canJump(int[] A) {
             return false;
     }
     return true;
+}
+
+// O(NlgN)
+public boolean canJump(int[] A) {
+    boolean[] can = new boolean[A.length];
+    can[0] = true;
+    
+    for (int i = 1; i < A.length; i++) {
+        for (int j = 0; j < i; j++) {
+            if (can[j] && j + A[j] >= i) {
+                can[i] = true;
+                break;
+            }
+        }
+    }
+    
+    return can[A.length - 1];
 }
