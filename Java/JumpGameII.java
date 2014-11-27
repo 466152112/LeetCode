@@ -7,7 +7,7 @@ public int jump(int[] A) {
     steps[0] = 0;	// position 0 reachable
     for (int i = 1; i < A.length; i++) {
         for (int j = 0; j < i; j++) {
-        	// reachable from j
+            // reachable from j
             if (A[j] + j >= i) {
                 steps[i] = steps[j] + 1;
                 break;
