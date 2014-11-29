@@ -33,5 +33,6 @@ private double getSlope(Point a, Point b) {
     // horizontal, slope 0
     if (a.y == b.y)
         return 0.0;
+    // 0/-1 and 0/1 is different
     return (double)(a.y - b.y)/(a.x - b.x);
 }
