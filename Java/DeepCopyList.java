@@ -68,3 +68,41 @@ public RandomListNode copyRandomList(RandomListNode head) {
     }
     return dummy.next;
 }
+
+// 3 pass the list
+public RandomListNode copyRandomList(RandomListNode head) {
+    if (head == null)
+        return null;
+    copyNode(head);
+    copyRandom(head);
+    RandomListNode result = head.next;
+    splitChain(head);
+    return result;
+}
+// deep copy each node, connect them in a chain
+private void copyNode(RandomListNode head) {
+    while (head != null) {
+        RandomListNode newNode = new RandomListNode(head.label);
+        newNode.next = head.next;
+        head.next = newNode;
+        head = newNode.next;
+    }
+}
+// copy node's random point
+private void copyRandom(RandomListNode head) {
+    while(head != null) {
+        if (head.random != null)
+            head.next.random = head.random.next;
+        head = head.next.next;
+    }
+}
+// split chain, make next pointer to the right place
+private void splitChain(RandomListNode head) {
+    while (head != null) {
+        RandomListNode temp = head.next.next;
+        if (temp != null)
+            head.next.next = temp.next;
+        head.next = temp;
+        head = head.next;
+    }
+} 
