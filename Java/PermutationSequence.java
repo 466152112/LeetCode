@@ -43,10 +43,10 @@ public String getPermutation(int n, int k) {
         if (i < n - 1)
             fact = fact/(n - i - 1);
         // scan the candidates to choose the unused one after the index
-        for (int j = 1; j <= n; j++) {
+        for (int j = 0; j < n; j++) {
             if (used[j] == false) {
                 if (index == 0) {
-                    sb.append((char)(j + '0'));
+                    sb.append((char)(j + 1 + '0'));
                     used[j] = true;
                     break;
                 }
