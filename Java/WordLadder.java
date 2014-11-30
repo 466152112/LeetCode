@@ -1,5 +1,6 @@
 // DFS, queue, brute force based
 // substing is slower than toCharArray for modify one character in the string
+// UPDATE: StringBuilder is more efficinet when modify one char
 // since substring will go scaning the string 3 times, while toCharArray only once
 public int ladderLength(String start, String end, Set<String> dict) {
     if (start == null || end == null || dict == null || start.equals(end))
