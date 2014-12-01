@@ -9,14 +9,20 @@ public double findMedianSortedArrays(int A[], int B[]) {
     else
         return findKth(A, 0, B, 0, len/2 + 1);
 }
-
+// find the Kth number in global sorted order
 public double findKth(int A[], int A_start, int B[], int B_start, int k) {
+    // A_start of out A, the global is only B[B_start:end]
     if (A_start >= A.length)
         return B[B_start + k - 1];
+    // B_start of out B, the global is only A[A_start:end]    
     if (B_start >= B.length)
         return A[A_start + k - 1];
+    // find the first one in the global
     if (k == 1)
         return Math.min(A[A_start], B[B_start]);
+    // compare A_key with B_key, to decide which part to go next
+    // A_index >= A.length means, we are not sure we can cut branch of A or not, just cut the smaller part of B
+    // so that, we set A default value to Integer.MAX_VALUE
     int A_key = (A_start + k/2 - 1) < A.length ? A[A_start + k/2 - 1] : Integer.MAX_VALUE;
     int B_key = (B_start + k/2 - 1) < B.length ? B[B_start + k/2 - 1] : Integer.MAX_VALUE;
     if (A_key <= B_key)
