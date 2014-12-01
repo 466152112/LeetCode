@@ -29,3 +29,13 @@ while(!queue.isEmpty()) {
 	}
 }
 return result;
+
+// DFS recursive
+private ArrayList result = new ArrayList();
+void dfs (TreeNode node) {
+	if(node == null)
+		return;
+	result.add(node.val);
+	dfs(node.left);
+	dfs(node.right);
+}
