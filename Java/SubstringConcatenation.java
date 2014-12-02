@@ -51,3 +51,41 @@ public ArrayList<Integer> findSubstring(String S, String[] L) {
     */
     return result;
 }
+
+// get the perumationII with duplicates
+public ArrayList<Integer> findSubstring(String S, String[] L) {
+    ArrayList<Integer> result = new ArrayList<Integer>();
+    if (S == null || L == null || S.length() == 0 || L.length == 0)
+        return result;
+    int lenS = S.length();
+    int lenL = L.length;
+    int lenWord = L[0].length();
+    ArrayList<String> dict = new ArrayList<String>();
+    Arrays.sort(L);
+    int[] visited = new int[lenL];
+    String one = "";
+    getPermutation(dict, one, visited, L);
+    // go though the string S, if containsKey in the hashmap
+    for (int i = 0; i <= lenS - lenL*lenWord; i++) {
+        if (dict.contains(S.substring(i, i + lenL*lenWord)))
+            result.add(i);
+    }
+    return result;
+}
+
+// get all the possible concatenation of the words, save them in a hashmap
+private void getPermutation(ArrayList<String> dict, String one, int[] visited, String[] L) {
+    if (one.length() == L.length * L[0].length())
+        dict.add(new String(one));
+    else {
+        for (int i = 0; i < L.length; i++) {
+            if (visited[i] == 1 || (i != 0 && L[i].equals(L[i - 1]) && visited[i - 1] == 0))
+                continue;
+            visited[i] = 1;
+            one = one + L[i];
+            getPermutation(dict, one, visited, L);
+            one = one.substring(0, one.length() - L[0].length());
+            visited[i] = 0;
+        }
+    }
+}
