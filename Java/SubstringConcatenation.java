@@ -29,5 +29,25 @@ public ArrayList<Integer> findSubstring(String S, String[] L) {
         }
         result.add(i);
     }
+    
+    /* here is another way to control the loop
+    for (int i = 0; i <= lenS - lenL*lenWord; i++) {
+        // create a new HashMap for current index
+        HashMap<String, Integer> temp = new HashMap<String, Integer>(map);
+        for (int j = i; j < lenL*lenWord + i; j += lenWord) {
+            String sub = S.substring(j, j + lenWord);
+            if (!temp.containsKey(sub))
+                break;
+            // deal with duplicates
+            else if (temp.get(sub) > 1)
+                temp.put(sub, temp.get(sub) - 1);
+            // deal with only one left
+            else
+                temp.remove(sub);
+        }
+        if (temp.isEmpty())
+            result.add(i);
+    }    
+    */
     return result;
 }
