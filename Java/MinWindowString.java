@@ -1,4 +1,8 @@
-//
+//Generally speaking, the idea of this problem is not straightforward, implementation is not easy, it is a difficult problem!!!
+// 从开始往后扫描，直到match的count等于T的length，然后把leftbound往后缩减，直到不能再剪了，把它和当前minWindow比较更新
+// 移出第一个char，increase left bound更新sHashMap的权值，重新找另一个minWindow
+// repeat 比较minWindow大小
+// HashMap主要作用就是count当前match字符数量
 public String minWindow(String S, String T) {
     if (S == null || T == null || S.length() == 0 || T.length() == 0 || T.length() > S.length())
         return "";
