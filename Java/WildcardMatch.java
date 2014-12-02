@@ -16,7 +16,7 @@ public boolean isMatch(String s, String p) {
             j++;
         }
         else if (j < b.length && b[j] == '*') {
-            foundStar = true;
+            foundStar = true; // update safteLocation for new star
             safeLocationI = i + 1;
             safeLocationJ = j + 1;
             j++;
