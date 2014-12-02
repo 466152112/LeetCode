@@ -1,4 +1,7 @@
 // backtracking, back to the last safe location
+// Wildcard and regular expression are similar, this one use backtracking, efficient
+// RE use DP recursive not efficent, so the same method will TLE
+// try to implement this one to the RE one.
 public boolean isMatch(String s, String p) {
     if (s == null || p == null)
         return false;
