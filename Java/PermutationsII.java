@@ -18,6 +18,8 @@ public void helper(ArrayList<ArrayList<Integer>> result, ArrayList<Integer> list
     }
     
     for(int i = 0; i < num.length; i++) {
+        // visited[i] == 1 means already visit, pass
+        // num[i] == num[i - 1] && visited[i - 1] == 0 means, i == i - 1 and i - 1 is not visited, means, we have already get the permutation start from i
         if (visited[i] == 1 || (i != 0 && num[i] == num[i - 1] && visited[i - 1] == 0)){
             continue;
         }
