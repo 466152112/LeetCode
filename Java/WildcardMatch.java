@@ -36,3 +36,35 @@ public boolean isMatch(String s, String p) {
     }
     return true;
 }
+
+// recurive, similar with the regular expression solutuon, TLE
+public boolean isMatch(String s, String p) {
+    if (s == null || p == null)
+        return false;
+    char[] a = s.toCharArray();
+    char[] b = p.toCharArray();
+    return helpMatch(a, 0, b, 0);
+}
+
+private boolean helpMatch(char[] a, int a_start, char[] b, int b_start) {
+    // matched til the end of each string
+    if (a_start == a.length && b_start == b.length)
+        return true;
+    // b is *, keep scan a
+    if (b_start < b.length && b[b_start] == '*') {
+        while (a_start <= a.length) {
+            // keep scaning a, until true, or a reached end
+            if (helpMatch(a, a_start, b, b_start + 1))
+                return true;
+            else
+                a_start++;
+        }
+        return false;
+    }
+    // normal case, move one step ahead
+    else if (a_start < a.length && b_start < b.length && (a[a_start] == b[b_start] || b[b_start] == '?')) {
+        return helpMatch(a, a_start + 1, b, b_start + 1);
+    }
+    else
+        return false;
+}
