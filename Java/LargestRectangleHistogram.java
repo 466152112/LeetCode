@@ -24,6 +24,24 @@ public int largestRectangleArea(int[] height) {
     }
     return maxArea;
 }
+// a new way instead of go back and finish all
+    private int maxHist(int[] hist) {
+        Stack<Integer> stack = new Stack<Integer>();
+        int max = 0;
+        for (int i = 0; i <= hist.length; i++) {
+            int rightBound = i == hist.length? -1:hist[i];
+            if (stack.isEmpty() || rightBound >= hist[stack.peek()])
+                stack.push(i);
+            else if (!stack.isEmpty()){
+                int h = hist[stack.pop()];
+                int w = stack.isEmpty()? i : i - stack.peek() - 1;
+                max = Math.max(max, h*w);
+                i--;
+            }
+        }
+        return max;
+    }
+
 // naive recursive, TLE
 public class Solution {
     public int largestRectangleArea(int[] height) {
