@@ -1,7 +1,28 @@
 // TO DO LIST tommorw, optimize for this problem, finish the other 7, start summary for the wanderful LeetCode journey
+//It is not difficult to figure out an algorithm to solve the problem. But to give a bug-free code and sufficiently test all edge cases make it not a easy game.
+// most concise traverse
+public ArrayList<Interval> insert(ArrayList<Interval> intervals, Interval newInterval) {
+    ArrayList<Interval> result = new ArrayList<Interval>();
+    int position = 0;
+    for (Interval one:intervals) {
+        if (one.end < newInterval.start) {
+            result.add(one);
+            position++;
+        }
+        else if (one.start > newInterval.end) {
+            result.add(one);
+        }
+        else {
+            newInterval.start = Math.min(newInterval.start, one.start);
+            newInterval.end = Math.max(newInterval.end, one.end);
+        }
+            
+    }
+    result.add(position, newInterval);
+    return result;
+}
 
 // Naive thought: find the location first, check front and back for merging
-//It is not difficult to figure out an algorithm to solve the problem. But to give a bug-free code and sufficiently test all edge cases make it not a easy game.
 public ArrayList<Interval> insert(ArrayList<Interval> intervals, Interval newInterval) {
     ArrayList<Interval> result = new ArrayList<Interval>();
     int position = 0;
@@ -28,5 +49,29 @@ public ArrayList<Interval> insert(ArrayList<Interval> intervals, Interval newInt
     result.add(new Interval(start, end));
     while (position < intervals.size())
         result.add(intervals.get(position++));        
+    return result;
+}
+
+// one pass, keep updating the newe interval
+public ArrayList<Interval> insert(ArrayList<Interval> intervals, Interval newInterval) {
+    ArrayList<Interval> result = new ArrayList<Interval>();
+    int position = 0;
+    // add safe front
+    while (position < intervals.size() && intervals.get(position).end < newInterval.start)
+        result.add(intervals.get(position++));
+    // update the smaller start
+    if (position < intervals.size())
+        newInterval.start = Math.min(intervals.get(position).start, newInterval.start);
+    // integrate all the intervals inside
+    while (position < intervals.size() && intervals.get(position).start <= newInterval.end)
+        position++;
+    // update the larger end
+    if (position > 0)
+        newInterval.end = Math.max(intervals.get(position - 1).end, newInterval.end);
+    // add new interval
+    result.add(newInterval);
+    // add the rest
+    while (position < intervals.size())
+        result.add(intervals.get(position++));
     return result;
 }
