@@ -3,11 +3,11 @@
 // most concise traverse
 public ArrayList<Interval> insert(ArrayList<Interval> intervals, Interval newInterval) {
     ArrayList<Interval> result = new ArrayList<Interval>();
-    int position = 0;
+    int insertPos = 0;
     for (Interval one:intervals) {
         if (one.end < newInterval.start) {
             result.add(one);
-            position++;
+            insertPos++;
         }
         else if (one.start > newInterval.end) {
             result.add(one);
@@ -18,7 +18,7 @@ public ArrayList<Interval> insert(ArrayList<Interval> intervals, Interval newInt
         }
             
     }
-    result.add(position, newInterval);
+    result.add(insertPos, newInterval);
     return result;
 }
 
