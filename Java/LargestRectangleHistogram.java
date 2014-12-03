@@ -1,4 +1,5 @@
 // use my own stack to store the left bound index
+// thanks to Ada's great mama http://n00tc0d3r.blogspot.ca/2013/03/largest-rectangle-in-histogram.html?view=classic
 public int largestRectangleArea(int[] height) {
     if (height == null || height.length == 0)
         return 0;
