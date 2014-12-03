@@ -1,3 +1,5 @@
+// TO DO LIST tommorw, optimize for this problem, finish the other 7, start summary for the wanderful LeetCode journey
+
 // Naive thought: find the location first, check front and back for merging
 //It is not difficult to figure out an algorithm to solve the problem. But to give a bug-free code and sufficiently test all edge cases make it not a easy game.
 public ArrayList<Interval> insert(ArrayList<Interval> intervals, Interval newInterval) {
