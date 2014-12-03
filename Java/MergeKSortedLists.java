@@ -88,3 +88,30 @@ public ListNode mergeKLists(ArrayList<ListNode> lists) {
     }
     return dummy.next;
 }
+
+// another way to use the Comparator interface
+public ListNode mergeKLists(ArrayList<ListNode> lists) {
+    if (lists == null || lists.size() == 0)
+        return null;
+    // heap, the PQ for storing the nodes, always poll the current smallest node
+    PriorityQueue<ListNode> heap = new PriorityQueue<ListNode>(lists.size(), new ListNodeComparator());
+    for (ListNode n:lists)
+        if (n != null) heap.offer(n);
+    ListNode dummy = new ListNode(0);
+    ListNode head = dummy;
+    while (!heap.isEmpty()) {
+        ListNode current = heap.poll();
+        head.next = current;
+        head = head.next;
+        if (current.next != null)
+            heap.offer(current.next);
+    }
+    return dummy.next;
+}
+
+private class ListNodeComparator implements Comparator<ListNode> {
+        @Override
+        public int compare(ListNode a, ListNode b) {
+            return a.val - b.val;
+        }
+}
