@@ -6,7 +6,7 @@ For example, given "great" and "rgate", the splits are
 ("gre", "at") vs. ("rga", "te") or ("ate", "rg")
 ("grea", "t") vs. ("rgat", "e") or ("gate", "r")
 */
-// DP using 3D table, O(N^4)
+// DP using 3D table, O(N^4), this 3D table is so .... hard..
 // table[i][j][k] iff s2.substring(j,j+k+1) is a scambled string of s1.substring(i,i+k+1)
 public boolean isScramble(String s1, String s2) {
     if (s1 == null || s2 == null || s1.length() != s2.length())
