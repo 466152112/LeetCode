@@ -1,5 +1,4 @@
-/*
- * Copyright (C) 2014 Kai Zhou <kzhou3@ualberta.ca>
+/ * Copyright (C) 2014 Kai Zhou <kzhou3@ualberta.ca>
  * https://github.com/zkfairytale/LeetCode
  * Distributed under terms of the MIT license.
  */
