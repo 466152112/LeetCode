@@ -1,6 +1,7 @@
 /*
  * Copyright (C) 2014 Kai Zhou <kzhou3@ualberta.ca>
  * https://github.com/zkfairytale/LeetCode
+ * http://zkfairytale.blogspot.ca/2014/12/first-blog-just-finished-156-leetcode.html
  * Distributed under terms of the MIT license.
  */
 
