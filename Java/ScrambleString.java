@@ -6,3 +6,6 @@ For example, given "great" and "rgate", the splits are
 ("gre", "at") vs. ("rga", "te") or ("ate", "rg")
 ("grea", "t") vs. ("rgat", "e") or ("gate", "r")
 */
+// DP using 3D table, O(N^4)
+
+// recursive O(2^N) exponential
