@@ -29,3 +29,22 @@ public double findKth(int A[], int A_start, int B[], int B_start, int k) {
         return findKth(A, A_start + k/2, B, B_start, k - k/2);
     return findKth(A, A_start, B, B_start + k/2, k - k/2);
 }
+
+// O(m + n), merge two array
+public double findMedianSortedArrays(int A[], int B[]) {
+    int[] C = new int[A.length + B.length];
+    int i = 0, j = 0, k = 0;
+    while (i < A.length && j < B.length) {
+        if (A[i] < B[j])
+            C[k++] = A[i++];
+        else
+            C[k++] = B[j++];
+    }
+    while (i < A.length)
+        C[k++] = A[i++];
+    while (j < B.length)
+        C[k++] = B[j++];
+    if (C.length%2 == 0)
+        return (double)(C[C.length/2] + C[C.length/2 - 1]) / 2.0;
+    return (double)C[C.length/2];
+}
