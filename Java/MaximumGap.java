@@ -11,6 +11,7 @@ public int maximumGap(int[] num) {
     }
     // the minimum possibale gap, ceiling of the integer division
     int gap = (int)Math.ceil((double)(max - min)/(num.length - 1));
+    int bucketSize = (int)Math.ceil((double)(max - min)/gap); // actuall bucket size needed
     int[] bucketsMIN = new int[num.length - 1]; // store the min value in that bucket
     int[] bucketsMAX = new int[num.length - 1]; // store the max value in that bucket
     Arrays.fill(bucketsMIN, Integer.MAX_VALUE);
