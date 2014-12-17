@@ -1,3 +1,4 @@
+//We can make it more concise by add zeros to list. And it would be better to do input validation first.
 public int compareVersion(String version1, String version2) {
     String[] list1 = version1.split("\\.");
     String[] list2 = version2.split("\\.");
