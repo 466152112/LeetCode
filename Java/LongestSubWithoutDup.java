@@ -1,5 +1,21 @@
 // hint: hashmap or hashset, two point
-
+// 2, hashmap, do not remove the former keys, use their value to compare
+public int lengthOfLongestSubstring(String s) {
+    if (s == null || s.length() < 1)
+        return 0;
+    HashMap<Character, Integer> map = new HashMap<Character, Integer>();
+    char[] c = s.toCharArray();
+    int max = 0; // the max length
+    int start = 0; // start point of the substring
+    for (int i = 0; i < c.length; i++) {
+        if (map.containsKey(c[i]) && map.get(c[i]) >= start) {
+            max = Math.max(max, i - start);
+            start = map.get(c[i]) + 1;
+        }
+        map.put(c[i], i);
+    }
+    return Math.max(max, c.length - start);
+}
 // 1, hashmap, leftBound, when meet duplicate, remove from leftBound to oldIndex
 public int lengthOfLongestSubstring(String s) {
     if (s == null || s.length() == 0)
