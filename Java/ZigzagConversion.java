@@ -1,3 +1,25 @@
+// zig patten, every zigzag is size 2*nRows - 2
+public class Solution {
+    public String convert(String s, int nRows) {
+        int len = s.length();
+        if (len <= nRows || nRows <= 1)
+            return s;
+        StringBuilder sb = new StringBuilder();
+        int size = nRows*2 - 2; // zigzag patten size
+        for (int i = 0; i < nRows; i++) { // append to new string row by row
+            for (int j = i; j < len; j += size) {
+                sb.append(s.charAt(j));
+                if (i != 0 && i != nRows - 1) { // inside rows, add addition characters
+                    int k = j + size - 2*i;
+                    if (k < len)
+                        sb.append(s.charAt(k));
+                }
+            }
+        }
+        return sb.toString();
+    }
+}
+
 // convert vertically
 public String convert(String s, int nRows) {
     int len = s.length();
