@@ -35,7 +35,7 @@ public class LRUCache {
 			Node node = map.get(key);
 			deleteNode(node); // delete that node in the LinkedList, not the map
 			insertHeadNode(node); // move that node to the head
-			return node.key;
+			return node.value;
 		}
 		return -1;
 	}
