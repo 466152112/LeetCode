@@ -1,3 +1,75 @@
+// Round 2, Double Linked Node
+public class LRUCache {
+    
+    private class DLinkedNode {
+        DLinkedNode previous;
+        DLinkedNode next;
+        int key; // Why need key in the Node? Help us remove the Key in the map
+        int value;
+        public DLinkedNode (int key, int value) {
+            this.key = key;
+            this.value = value;
+            previous = null;
+            next = null;
+        }
+        // Good design: getPrevious() setPrevious etc...
+    }
+    
+    private HashMap<Integer, DLinkedNode> map;
+    private int capacity;
+    private DLinkedNode head;
+    private DLinkedNode tail;
+    
+    public LRUCache(int capacity) {
+        map = new HashMap<Integer, DLinkedNode>();
+        this.capacity = capacity;
+        head = new DLinkedNode(-1, -1);
+        tail = new DLinkedNode(-1, -1);
+        head.next = tail;
+        tail.previous = head;
+    }
+    
+    public int get(int key) {
+        if (map.containsKey(key)) {
+            DLinkedNode node = map.get(key);
+            moveToHead(node);
+            return node.value;
+        } else
+            return -1;
+    }
+    
+    public void set(int key, int value) {
+        if (map.containsKey(key)) {
+            DLinkedNode node = map.get(key);
+            moveToHead(node);
+            node.value = value;
+        } else {
+            if (map.size() == capacity) {
+                map.remove(tail.previous.key);
+                tail.previous = tail.previous.previous;
+                tail.previous.next = tail;
+            }
+            DLinkedNode node = new DLinkedNode(key, value);
+            // insert to the head
+            node.next = head.next;
+            node.previous = head;
+            head.next.previous = node;
+            head.next = node;
+            map.put(key, node);
+        }
+    }
+    
+    private void moveToHead(DLinkedNode node) {
+        // move out of original position
+        node.previous.next = node.next;
+        node.next.previous = node.previous;
+        // move to head
+        node.next = head.next;
+        node.previous = head;
+        head.next.previous = node;
+        head.next = node;
+    }
+}
 import java.util.HashMap;
 // double linked Node class as inner data structure
 public class LRUCache {
