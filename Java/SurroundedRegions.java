@@ -1,3 +1,5 @@
+// can be solved in DFS (recursive and iterative with stack) and BFS with queue
+
 // DFS recursive, stackoverflow
 public void solve(char[][] board) {
     if (board == null || board.length == 0)
@@ -176,7 +178,7 @@ public void solve(char[][] board) {
     }
 }
 
-// DFS & set to 'B'
+// BFS & set to 'B'
 private void bfs(int i, int j, char[][] board) {
     Queue<Pair> queue = new LinkedList<Pair>();
     Pair pair = new Pair(i,j);
