@@ -10,7 +10,7 @@ public ArrayList<ArrayList<Integer>> subsets(int[] S) {
       return result;
   }
   private void helper(ArrayList<ArrayList<Integer>> result, ArrayList<Integer> oneList, int[] S, int start) {
-  // bacause we should add null as a subset
+      // bacause we should add null as a subset
       result.add(new ArrayList<Integer>(oneList));
       for (int i = start; i < S.length; i++) {
           oneList.add(S[i]);
