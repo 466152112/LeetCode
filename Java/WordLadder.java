@@ -17,8 +17,10 @@ public int ladderLength(String start, String end, Set<String> dict) {
             String s = queue.poll();
             for (int j = 0; j < s.length(); j++) {
                 for (char c = 'a'; c <= 'z'; c++) {
-                    String temp = s.substring(0,j) + c + s.substring(j + 1);
-                    //String tmp = replace(current, j, c);
+                    if (c == s.charAt(j))
+                        continue;
+                    String temp = s.substring(0,j) + c + s.substring(j + 1); // requare more space, memory limit error
+                    //String tmp = replace(s, j, c); // space efficent, passed OJ, why?
                     if (temp.equals(end))
                         return length;  // found, return
                     if (dict.contains(temp)) {
