@@ -38,9 +38,11 @@ public class Solution {
       if (!isValidBST(root.left))
           return false;
       // check root, ture then set new lastValue, no need add to result
-      if (lastValue >= root.val)
-          return false;
-      lastValue = root.val;
+        if (first && lastValue >= root.val)
+            return false;
+        lastValue = root.val;
+        if (first == false)
+            first = true;
       // finally go right
       if (!isValidBST(root.right))
           return false;
