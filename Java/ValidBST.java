@@ -1,3 +1,27 @@
+// Round 2 is awesome! from Augest 21st, 2015
+// Round 3, what if valid BST from preorder traverse?
+int pos;
+public boolean isPreOrderBST(int[] array) {
+    if (array == null || array.length == 0) {
+        return false;
+    }
+    pos = 0;
+    findPreOrder(array, array[0],Integer.MIN_VALUE, Integer.MAX_VALUE);
+    return pos == array.length;
+}
+private void findPreOrder(int[] array, int key, int min, int max) {
+    if (pos == array.length) {
+        return;
+    }
+    if (key > min && key < max) {
+        pos++;
+        if (pos < array.length) {
+            findPreOrder(array, array[pos], min, key);
+            findPreOrder(array, array[pos], key, max);
+        }
+    }
+}
+
 // Round 2, 少年，这题简单的狠，看我one pass一下
 public boolean isValidBST(TreeNode root) {
     if (root == null || root.left == null && root.right == null)
