@@ -12,6 +12,7 @@ public ArrayList<ArrayList<Integer>> subsets(int[] S) {
   private void helper(ArrayList<ArrayList<Integer>> result, ArrayList<Integer> oneList, int[] S, int start) {
       // bacause we should add null as a subset
       result.add(new ArrayList<Integer>(oneList));
+      // biggest difference is : start and check duplicate with the permucation problem
       for (int i = start; i < S.length; i++) {
           oneList.add(S[i]);
           helper(result, oneList, S, i + 1);
