@@ -14,6 +14,7 @@ private void helper(int[] num, ArrayList<ArrayList<Integer>> result, ArrayList<I
         return;
     }
     for (int i = 0; i < num.length; i++) {
+        // biggest difference is : start and check duplicate with the permucation problem
         if (oneList.contains(num[i]))
             continue;
         oneList.add(num[i]);
