@@ -1,4 +1,8 @@
 // same module with permutation, combination (more similar with combination)
+// combination is different from permutation,
+// permutation care about the order, so any one can be add to the front
+// combination is no order, so the front should be from the "start"
+// combination is just a specitial case for subset problem, combinations are a small subset of the results of subset problem
 public ArrayList<ArrayList<Integer>> subsets(int[] S) {
       ArrayList<ArrayList<Integer>> result = new ArrayList<ArrayList<Integer>>();
       // actually, no need to check lengt == 0
