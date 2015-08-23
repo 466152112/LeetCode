@@ -16,6 +16,7 @@ public int numIslands(char[][] grid) {
     return result;
 }
 
+// WRONG, this is DFS
 // BFS from the point (i,j), mark all the visited point to '#'
 private void bfs(int i, int j, char[][] grid) {
     if (i < 0 || i >= grid.length || j < 0 || j >= grid[0].length)
