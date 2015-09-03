@@ -16,3 +16,20 @@ class Solution(object):
                 start = dup_map[c] + 1
             dup_map[c] = i
         return max(max_length, len(s) - start)
+
+    def lengthOfLongestSubstring(self, s):
+        """
+        :type s: str
+        :rtype: int
+        """
+        i = 0
+        j = 0
+        hashmap = {}
+        max_length = 0
+        while j < len(s):
+            if s[j] in hashmap and hashmap[s[j]] >= i:
+                max_length = max(max_length, j-i)
+                i = hashmap[s[j]] + 1
+            hashmap[s[j]] = j
+            j += 1
+        return max(max_length, j - i)
