@@ -17,6 +17,9 @@ class Solution(object):
         result = []
         if len(digits) == 0:
             return result
+        # or deal with len() == 1 specially
+        if len(digits) == 1:
+            return self.mapping(digits[0])
         others = self.letterCombinations(digits[1:])
         for c in self.mapping[digits[0]]:
             for s in others:
