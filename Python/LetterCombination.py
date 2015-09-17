@@ -1,3 +1,31 @@
+# DP, first + others, take care of the base case, which is empty list
+class Solution(object):
+    mapping = {'2':['a','b','c'],
+               '3':['d','e','f'],
+               '4':['g','h','i'],                   
+               '5':['j','k','l'],
+               '6':['m','n','o'],
+               '7':['p','q','r','s'],
+               '8':['t','u','v'],                   
+               '9':['w','x','y','z'],                   
+               '0':[' ']}    
+    def letterCombinations(self, digits):
+        """
+        :type digits: str
+        :rtype: List[str]
+        """
+        result = []
+        if len(digits) == 0:
+            return result
+        others = self.letterCombinations(digits[1:])
+        for c in self.mapping[digits[0]]:
+            for s in others:
+                result.append(c+s)
+            if others == []:
+                result.append(c)
+        return result
+
+# add, recursive, remove
 class Solution(object):
     result = []
     one = ''    
