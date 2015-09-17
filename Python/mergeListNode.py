@@ -11,9 +11,8 @@ class Solution(object):
         :type l2: ListNode
         :rtype: ListNode
         """
-        dummy = ListNode(-1)
         runner = ListNode(-1)
-        dummy.next = runner
+        dummy = runner
         while l1 != None and l2 != None:
             if l1.val < l2.val:
                 runner.next = l1
@@ -26,4 +25,4 @@ class Solution(object):
             runner.next = l1
         else:
             runner.next = l2
-        return dummy.next.next
+        return dummy.next
