@@ -16,3 +16,19 @@ class Solution(object):
             for j in range(n - 1, -1, -1):
                 dp_table[j] = min(max(1,dp_table[j+1] - dungeon[i][j]),max(1,dp_table[j] - dungeon[i][j]))
         return dp_table[0]
+
+class Solution(object):
+    def calculateMinimumHP(self, dungeon):
+        """
+        :type dungeon: List[List[int]]
+        :rtype: int
+        """
+        import sys
+        m, n = len(dungeon), len(dungeon[0])
+        dp = [[sys.maxint for i in range(n+1)] for j in range(m+1)]
+        dp[m-1][n], dp[m][n-1] = 1, 1 # for the last cell
+        for i in range(m-1,-1,-1):
+            for j in range(n-1,-1,-1):
+                min_require = min(dp[i+1][j],dp[i][j+1])
+                dp[i][j] = max(1, min_require - dungeon[i][j])
+        return dp[0][0]
